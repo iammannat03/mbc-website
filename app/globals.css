@@ -39,6 +39,8 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-sky-primary: #0056d2;
+  --color-sky-accent: #40abff;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,6 +51,8 @@
 }
 
 :root {
+  --color-sky-primary: #0056d2;
+  --color-sky-accent: #40abff;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -117,6 +121,14 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer utilities {
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -129,5 +141,13 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 }

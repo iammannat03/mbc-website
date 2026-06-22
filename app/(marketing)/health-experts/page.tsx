@@ -1,9 +1,17 @@
-import React from 'react'
+import { ExpertiseGrid } from "./_components/ExpertiseGrid";
+import { FinalCtaSection } from "./_components/FinalCtaSection";
+import { HeroSection } from "./_components/HeroSection";
+import { MeetExpertsSection } from "./_components/MeetExpertsSection";
+import { QualificationsSection } from "./_components/QualificationsSection";
 
-type Props = {}
-
-const HealthExperts = (props: Props) => {
-  return <div>HealthExperts</div>
+export default function HealthExpertsPage() {
+  return (
+    <>
+      <HeroSection />
+      <ExpertiseGrid />
+      <QualificationsSection />
+      <MeetExpertsSection />
+      <FinalCtaSection />
+    </>
+  );
 }
-
-export default HealthExperts

@@ -1,9 +1,15 @@
-import React from 'react'
+import { ApproachCtaSection } from "./_components/ApproachCtaSection";
+import { HeroSection } from "./_components/HeroSection";
+import { HowByeBimariHelpsSection } from "./_components/HowByeBimariHelpsSection";
+import { ModernLifeSection } from "./_components/ModernLifeSection";
 
-type Props = {}
-
-const Discover = (props: Props) => {
-  return <div>Discover</div>
+export default function DiscoverOurApproachPage() {
+  return (
+    <>
+      <HeroSection />
+      <ModernLifeSection />
+      <HowByeBimariHelpsSection />
+      <ApproachCtaSection />
+    </>
+  );
 }
-
-export default Discover
