@@ -23,18 +23,19 @@ export function HeroSection () {
       id='hero'
       className='full-bleed relative overflow-hidden bg-white'
     >
-      <div className='absolute inset-y-0 right-0 hidden lg:relative lg:flex lg:h-full lg:justify-end'>
-        <Image
-          src='/images/ai-insights/ai.png'
-          alt='Woman reviewing AI health insights on her phone'
-          width={3529}
-          height={1987}
-          className='h-full w-auto max-w-none object-contain object-right'
-          priority
-          sizes='58vw'
-        />
+      <div className='absolute inset-y-0 right-0 hidden lg:block'>
+        <div className='relative h-full aspect-[3529/1987]'>
+          <Image
+            src='/images/ai-insights/ai.png'
+            alt='Woman reviewing AI health insights on her phone'
+            fill
+            className='object-cover object-right'
+            priority
+            sizes='58vw'
+          />
+        </div>
         <div
-          className='pointer-events-none absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-white to-transparent'
+          className='pointer-events-none absolute inset-y-0 right-full w-36 bg-gradient-to-r from-white to-transparent'
           aria-hidden
         />
       </div>
