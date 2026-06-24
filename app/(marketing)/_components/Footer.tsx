@@ -26,7 +26,6 @@ const CONTACT_ITEMS = [
     href: 'mailto:lamaro@lamaroyc.us',
     icon: 'email' as const
   },
-  { text: '9899982868', href: 'tel:+919899982868', icon: 'phone' as const }
 ] as const
 
 const SOCIAL_LINKS = [

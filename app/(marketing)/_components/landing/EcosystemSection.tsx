@@ -114,18 +114,21 @@ function PillarCard ({
 }: Omit<Pillar, 'side' | 'icon' | 'angle'>) {
   return (
     <article className='max-w-sm rounded-2xl bg-white p-3 shadow-sm ring-1 ring-black/6 md:p-4'>
-      <h3
-        className='mb-3 text-lg font-bold leading-snug md:text-xl'
-        style={{ color: titleColor }}
-      >
-        {title}
+      <div className='mb-2'>
+        <h3
+          className='text-lg font-bold leading-snug md:text-xl'
+          style={{ color: titleColor }}
+        >
+          {title}
+        
+        </h3>
         {subtitle ? (
-          <>
-            {' '}
-            <span className='text-base md:text-lg'>{subtitle}</span>
-          </>
-        ) : null}
-      </h3>
+            <>
+              {' '}
+              <h2 className='font-bold'>{subtitle}</h2>
+            </>
+          ) : null}
+      </div>
       <p className='text-sm leading-relaxed text-black md:text-[15px]'>
         {description}
       </p>
@@ -185,7 +188,7 @@ function EcosystemDiagram ({ showCards = false }: { showCards?: boolean }) {
           <div className='rounded-full bg-white p-5 shadow-md ring-1 ring-black/6'>
             <Icon name='user-rounded' size={52} />
           </div>
-            <div className='text-sm font-bold pt-5'>Your Wellness Journey</div>
+          <div className='text-sm font-bold pt-5 flex items-center justify-center'>Your Wellness Journey</div>
           
         </div>
 

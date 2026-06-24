@@ -15,7 +15,7 @@ export function StrengthSection() {
       className="full-bleed bg-[#f7faff] py-16 md:py-20"
     >
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-12">
           <div className="flex flex-col gap-5">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-emerald-600 md:text-base">
               Our Strength
@@ -54,14 +54,14 @@ export function StrengthSection() {
             </ul>
           </div>
 
-          <div className="relative w-full">
+          <div className="relative w-full lg:translate-y-12 lg:origin-left lg:scale-110">
             <Image
               src="/images/home/why.png"
               alt="Smart Ring plus AI Insights plus Health Experts plus Accountability equals Better Health"
               width={986}
               height={513}
               className="h-auto w-full object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1024px) 100vw, 60vw"
             />
           </div>
         </div>
