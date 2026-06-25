@@ -1,143 +1,174 @@
-import { Container, GradientText, SectionShell } from "@/components/ui/SectionShell";
+import { Container, SectionShell } from "@/components/ui/SectionShell";
 
 type TrendCard = {
   title: string;
   metric: string;
-  subtitle: string;
   accent: string;
-  chart: "bars" | "line" | "area" | "steps";
+  chart: "sleep-bars" | "recovery-line" | "stress-wave" | "activity-bars";
 };
 
 const TREND_CARDS: TrendCard[] = [
   {
     title: "Weekly Sleep Pattern",
     metric: "7h 12m",
-    subtitle: "Avg. nightly sleep",
     accent: "#0056D2",
-    chart: "bars",
+    chart: "sleep-bars",
   },
   {
     title: "Recovery Trends",
     metric: "82%",
-    subtitle: "Weekly average",
     accent: "#22C55E",
-    chart: "line",
+    chart: "recovery-line",
   },
   {
     title: "Stress Levels",
     metric: "64/100",
-    subtitle: "Lower than last week",
     accent: "#9333EA",
-    chart: "area",
+    chart: "stress-wave",
   },
   {
     title: "Activity Progress",
     metric: "8,245 steps",
-    subtitle: "Daily average",
     accent: "#F97316",
-    chart: "steps",
+    chart: "activity-bars",
   },
 ];
 
-function MiniChart({ type, accent }: { type: TrendCard["chart"]; accent: string }) {
-  if (type === "bars") {
-    return (
-      <div className="mt-4 flex items-end gap-1.5">
-        {[55, 70, 45, 80, 65, 75, 72].map((h, i) => (
-          <div
-            key={i}
-            className="flex-1 rounded-sm"
-            style={{ height: `${h * 0.5}px`, backgroundColor: `${accent}99` }}
-          />
+const DAY_LABELS = ["M", "T", "W", "T", "F", "S", "S"];
+
+function SleepBarChart({ accent }: { accent: string }) {
+  const heights = [55, 62, 58, 70, 85, 68, 60];
+  return (
+    <div className="mt-auto pt-4">
+      <div className="flex h-20 items-end gap-1.5">
+        {heights.map((h, i) => (
+          <div key={i} className="flex flex-1 flex-col items-center gap-1">
+            <div
+              className="w-full rounded-sm"
+              style={{
+                height: `${h * 0.95}px`,
+                backgroundColor: i === 4 ? accent : `${accent}66`,
+              }}
+            />
+            <span className="text-[9px] text-muted-foreground">
+              {DAY_LABELS[i]}
+            </span>
+          </div>
         ))}
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  if (type === "line") {
-    return (
-      <svg viewBox="0 0 120 40" className="mt-4 h-10 w-full">
-        <polyline
-          fill="none"
-          stroke={accent}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          points="0,30 20,25 40,28 60,15 80,20 100,10 120,12"
-        />
-      </svg>
-    );
-  }
-
-  if (type === "area") {
-    return (
-      <svg viewBox="0 0 120 40" className="mt-4 h-10 w-full">
-        <polygon
-          fill={`${accent}33`}
-          points="0,35 20,28 40,32 60,18 80,22 100,12 120,15 120,40 0,40"
-        />
-        <polyline
-          fill="none"
-          stroke={accent}
-          strokeWidth="2"
-          points="0,35 20,28 40,32 60,18 80,22 100,12 120,15"
-        />
-      </svg>
-    );
-  }
-
+function RecoveryLineChart({ accent }: { accent: string }) {
+  const points = [
+    [0, 48],
+    [20, 38],
+    [40, 43],
+    [60, 23],
+    [80, 28],
+    [100, 8],
+    [120, 13],
+  ];
+  const polylinePoints = points.map(([x, y]) => `${x},${y}`).join(" ");
   return (
-    <div className="mt-4 flex items-end gap-1">
-      {[30, 50, 40, 70, 55, 85, 60].map((h, i) => (
+    <svg viewBox="0 0 120 56" className="mt-auto h-20 w-full pt-4">
+      <polyline
+        fill="none"
+        stroke={accent}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        points={polylinePoints}
+      />
+      {points.map(([cx, cy], i) => (
+        <circle key={i} cx={cx} cy={cy} r="2.5" fill={accent} />
+      ))}
+    </svg>
+  );
+}
+
+function StressWaveChart({ accent }: { accent: string }) {
+  return (
+    <svg viewBox="0 0 120 56" className="mt-auto h-20 w-full pt-4">
+      <path
+        d="M0,33 C15,10 25,48 40,25 S65,6 80,29 S105,44 120,17"
+        fill="none"
+        stroke={accent}
+        strokeWidth="2"
+        strokeDasharray="4 3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ActivityBarChart({ accent }: { accent: string }) {
+  const heights = [35, 55, 42, 68, 50, 78, 58];
+  return (
+    <div className="mt-auto flex h-20 items-end gap-1 pt-4">
+      {heights.map((h, i) => (
         <div
           key={i}
           className="flex-1 rounded-full"
-          style={{ height: `${h * 0.4}px`, backgroundColor: `${accent}80` }}
+          style={{
+            height: `${h * 1.05}px`,
+            backgroundColor: i % 2 === 0 ? accent : "#FBBF24",
+          }}
         />
       ))}
     </div>
   );
 }
 
+function MiniChart({
+  type,
+  accent,
+}: {
+  type: TrendCard["chart"];
+  accent: string;
+}) {
+  switch (type) {
+    case "sleep-bars":
+      return <SleepBarChart accent={accent} />;
+    case "recovery-line":
+      return <RecoveryLineChart accent={accent} />;
+    case "stress-wave":
+      return <StressWaveChart accent={accent} />;
+    case "activity-bars":
+      return <ActivityBarChart accent={accent} />;
+  }
+}
+
 export function WeeklyTrendsSection() {
   return (
-    <SectionShell id="weekly-trends" className="bg-white py-10">
+    <SectionShell id="weekly-trends" className="bg-white py-10 md:py-16">
       <Container>
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="flex flex-col gap-4 lg:sticky lg:top-24">
-            <h2 className="text-3xl font-bold leading-tight text-foreground md:text-4xl">
-              Weekly{" "}
-              <GradientText variant="insights" className="font-bold">
-                Trends
-              </GradientText>
-            </h2>
-            <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-              See how your sleep, recovery, stress, and activity evolve over
-              time. Spot patterns, celebrate progress, and adjust your routine
-              with confidence.
-            </p>
-          </div>
+        <div className="mb-8 flex flex-col items-center gap-3 text-center md:mb-12">
+          <h2 className="text-2xl font-bold leading-tight text-[#026D31] md:text-3xl lg:text-4xl">
+            Weekly Trends
+          </h2>
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            Track your progress and see how small changes create lasting impact.
+          </p>
+        </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {TREND_CARDS.map((card) => (
-              <article
-                key={card.title}
-                className="rounded-2xl border border-border/50 bg-white p-6 shadow-md"
-              >
-                <p className="text-sm font-semibold text-muted-foreground">
-                  {card.title}
-                </p>
-                <p
-                  className="mt-2 text-2xl font-bold"
-                  style={{ color: card.accent }}
-                >
-                  {card.metric}
-                </p>
-                <p className="text-xs text-muted-foreground">{card.subtitle}</p>
-                <MiniChart type={card.chart} accent={card.accent} />
-              </article>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+          {TREND_CARDS.map((card) => (
+            <article
+              key={card.title}
+              className="flex flex-col rounded-2xl bg-white p-5 shadow-[0_4px_20px_rgba(15,23,42,0.08)]"
+            >
+              <p className="text-sm font-semibold text-[#0B1C30]">
+                {card.title}
+              </p>
+              <p className="mt-3 text-xs text-muted-foreground">Average</p>
+              <p className="text-xl font-bold text-[#0B1C30] md:text-2xl">
+                {card.metric}
+              </p>
+              <MiniChart type={card.chart} accent={card.accent} />
+            </article>
+          ))}
         </div>
       </Container>
     </SectionShell>

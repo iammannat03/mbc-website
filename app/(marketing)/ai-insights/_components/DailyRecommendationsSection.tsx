@@ -1,52 +1,57 @@
-import Image from "next/image";
+import {
+  Droplets,
+  Heart,
+  Moon,
+  UserRound,
+  Users,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-import { Container, GradientText, SectionShell } from "@/components/ui/SectionShell";
-import { Icon } from "@/components/ui/Icon";
-import type { IconName } from "@/lib/icons";
+import { Container, SectionShell } from "@/components/ui/SectionShell";
 
 type Recommendation = {
   title: string;
   tip: string;
-  icon: IconName;
+  icon: LucideIcon;
   accent: string;
-  iconCircle: string;
+  iconBg: string;
 };
 
 const RECOMMENDATIONS: Recommendation[] = [
   {
     title: "Better Sleep",
-    tip: "Dim lights 30 min before bed for deeper rest.",
-    icon: "moon-sleep",
-    accent: "#0056D2",
-    iconCircle: "/images/sky/icon-circle-blue.svg",
+    tip: "Follow a consistent sleep routine",
+    icon: Moon,
+    accent: "#9333EA",
+    iconBg: "#F3E8FF",
   },
   {
     title: "Mindful Eating",
-    tip: "Eat your largest meal at lunch for better digestion.",
-    icon: "food-apple",
+    tip: "Eat balanced, whole and natural foods",
+    icon: Heart,
     accent: "#22C55E",
-    iconCircle: "/images/sky/icon-circle-green.svg",
+    iconBg: "#DCFCE7",
   },
   {
     title: "Stress Balance",
-    tip: "Try 5 minutes of box breathing after lunch.",
-    icon: "stress",
-    accent: "#9333EA",
-    iconCircle: "/images/sky/icon-circle-blue.svg",
+    tip: "Take time to breathe and unwind",
+    icon: UserRound,
+    accent: "#6B21A8",
+    iconBg: "#EDE9FE",
   },
   {
     title: "Daily Movement",
-    tip: "A 10-minute walk after meals aids recovery.",
-    icon: "running",
-    accent: "#F97316",
-    iconCircle: "/images/sky/icon-circle-orange.svg",
+    tip: "Move your body every day",
+    icon: Users,
+    accent: "#0056D2",
+    iconBg: "#DBEAFE",
   },
   {
     title: "Hydration",
-    tip: "Drink a glass of water first thing in the morning.",
-    icon: "waterdrop",
+    tip: "Drink enough water throughout the day",
+    icon: Droplets,
     accent: "#14B8A6",
-    iconCircle: "/images/sky/icon-circle-green.svg",
+    iconBg: "#CCFBF1",
   },
 ];
 
@@ -54,50 +59,49 @@ export function DailyRecommendationsSection() {
   return (
     <SectionShell
       id="daily-recommendations"
-      className="bg-gradient-to-b from-[#f0f8ff] to-white py-14 md:py-20"
+      className="bg-linear-to-b from-[#f0f8ff] to-white py-10 md:py-16"
     >
       <Container>
-        <div className="grid items-start gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16">
-          <div className="flex flex-col gap-4 lg:sticky lg:top-24">
-            <h2 className="text-3xl font-bold leading-tight text-foreground md:text-4xl">
-              Daily{" "}
-              <GradientText variant="insights" className="font-bold">
-                Recommendations
-              </GradientText>
-            </h2>
-            <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-              Actionable tips based on your latest data — small changes that
-              compound into lasting wellness improvements.
-            </p>
-          </div>
+        <div className="mb-8 flex flex-col items-center gap-3 text-center md:mb-12">
+          <h2 className="text-2xl font-bold leading-tight text-sky-primary md:text-3xl lg:text-4xl">
+            Daily Recommendations
+          </h2>
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            AI-powered tips to help you make better choices, every day.
+          </p>
+        </div>
 
-          <div className="flex gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {RECOMMENDATIONS.map((item) => (
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
+          {RECOMMENDATIONS.map((item) => {
+            const Icon = item.icon;
+            return (
               <article
                 key={item.title}
-                className="flex w-[180px] shrink-0 flex-col rounded-2xl border border-border/50 bg-white p-5 shadow-md md:w-[200px]"
+                className="flex flex-col items-center rounded-2xl bg-white px-4 pb-0 pt-6 text-center shadow-[0_4px_20px_rgba(15,23,42,0.08)]"
               >
-                <div className="relative mb-4 size-14 bg-sky-primary/10 rounded-full p-2">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Icon name={item.icon} size={22} />
-                  </div>
-                </div>
-                <h3
-                  className="text-base font-bold"
-                  style={{ color: item.accent }}
+                <div
+                  className="mb-4 flex size-14 items-center justify-center rounded-2xl"
+                  style={{ backgroundColor: item.iconBg }}
                 >
+                  <Icon
+                    className="size-6"
+                    style={{ color: item.accent }}
+                    strokeWidth={2}
+                  />
+                </div>
+                <h3 className="text-base font-bold text-[#0B1C30]">
                   {item.title}
                 </h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {item.tip}
                 </p>
                 <div
-                  className="mt-4 h-1 w-full rounded-full"
+                  className="mt-5 h-1 w-full rounded-b-2xl"
                   style={{ backgroundColor: item.accent }}
                 />
               </article>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </Container>
     </SectionShell>
