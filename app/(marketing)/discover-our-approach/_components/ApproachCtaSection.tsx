@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { BlueButton } from "@/app/(marketing)/ai-insights-old/_components/BlueButton";
+import { BlueButton } from "@/app/(marketing)/ai-insights/_components/BlueButton";
 import { Container, SectionShell } from "@/components/ui/SectionShell";
 
 export function ApproachCtaSection() {
