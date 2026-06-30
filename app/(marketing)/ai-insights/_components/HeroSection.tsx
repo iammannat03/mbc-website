@@ -67,7 +67,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="relative mt-8 w-full lg:hidden">
+        {/* <div className="relative mt-8 w-full lg:hidden">
           <Image
             src="/images/discover-our-approach/hero/hero.png"
             alt="Discover our approach hero illustration"
@@ -77,7 +77,7 @@ export function HeroSection() {
             priority
             sizes="100vw"
           />
-        </div>
+        </div> */}
       </Container>
     </SectionShell>
   );
