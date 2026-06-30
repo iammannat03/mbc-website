@@ -50,7 +50,7 @@ const CARDS: JourneyCard[] = [
     title: "AI Powered Insights",
     description:
       "AI turns your data into clear insights and personalized action plans.",
-    cta: "Explore Insights",
+    cta: "Discover",
     href: "/ai-insights",
     visual: "ai",
     theme: {
@@ -67,7 +67,7 @@ const CARDS: JourneyCard[] = [
     title: "Natural Health Experts",
     description:
       "Get Daily Guidance from our experienced natural health experts (Ayurvedic + Naturopathy + Yoga + Lifestyle & Wellness)",
-    cta: "Meet our Experts",
+    cta: "Discover",
     href: "/health-experts",
     visual: "experts",
     theme: {
@@ -81,10 +81,10 @@ const CARDS: JourneyCard[] = [
   },
   {
     number: "04",
-    title: "Daily Guidance, Accountability & Support",
+    title: "Daily Guidance & Accountability",
     description:
       "Real transformation requires more than recommendations - it requires consistent support.",
-    cta: "Discover Our Approach",
+    cta: "Discover",
     href: "/discover-our-approach",
     visual: "support",
     theme: {
@@ -115,30 +115,34 @@ const SUPPORT_ITEMS = [
 
 function RingVisual() {
   return (
-    <div className="flex items-center gap-3">
-      <div className="relative h-36 w-[42%] shrink-0">
+    <div className="flex h-full flex-col">
+      {/* Rings */}
+      <div className="relative mx-auto h-30 w-full">
         <Image
           src="/images/sky/cta-ring.png"
           alt=""
           width={324}
           height={334}
-          className="absolute bottom-0 left-0 h-auto w-[78%] object-contain drop-shadow-md brightness-90 contrast-125"
+          className="absolute left-[0%] top-2 w-[76%] object-contain drop-shadow-md brightness-90 contrast-125"
         />
+
         <Image
           src="/images/sky/cta-ring.png"
           alt=""
           width={324}
           height={334}
-          className="absolute bottom-2 right-0 h-auto w-[72%] object-contain drop-shadow-lg hue-rotate-[35deg] saturate-150"
+          className="absolute right-[0%] top-0 w-[76%] object-contain drop-shadow-lg hue-rotate-[35deg] saturate-150"
         />
       </div>
 
-      <ul className="flex min-w-0 flex-1 flex-col gap-2">
+      {/* Features */}
+      <ul className="mt-8 sm:mt-4 grid grid-cols-2 gap-x-5 gap-y-3">
         {RING_FEATURES.map((item) => (
           <li key={item} className="flex items-center gap-2">
             <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#0056d2]/10">
               <Check className="size-3 stroke-[3] text-[#0056d2]" />
             </span>
+
             <span className="text-sm font-medium text-[#334155]">{item}</span>
           </li>
         ))}
@@ -155,7 +159,7 @@ function AiInsightsVisual() {
         You slept better last night
       </p>
 
-      <div className="mt-3 flex h-14 items-end gap-1.5">
+      <div className="mt-3 flex h-30 items-end gap-1.5">
         {[38, 52, 44, 68, 58, 72, 64].map((height, index) => (
           <div
             key={index}
@@ -165,10 +169,8 @@ function AiInsightsVisual() {
         ))}
       </div>
 
-      <div className="mt-3 rounded-xl bg-[#f8fafc] px-3 py-2.5">
-        <p className="text-xs font-medium text-[#475569]">
-          Stress is improving
-        </p>
+      {/* <div className="mt-3 rounded-xl bg-[#f8fafc] px-3 py-2.5">
+        <p className="text-xs font-medium text-[#475569]">Stress is improving</p>
         <svg viewBox="0 0 120 28" className="mt-1.5 h-7 w-full" aria-hidden>
           <polyline
             fill="none"
@@ -179,7 +181,7 @@ function AiInsightsVisual() {
             points="0,22 18,20 36,18 54,14 72,12 90,8 108,6 120,4"
           />
         </svg>
-      </div>
+      </div> */}
     </div>
   );
 }

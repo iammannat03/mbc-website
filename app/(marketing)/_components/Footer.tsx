@@ -22,15 +22,16 @@ const CONTACT_ITEMS = [
     icon: "location" as const,
   },
   {
-    text: "lamaro@lamaroyc.us",
-    href: "mailto:lamaro@lamaroyc.us",
+    text: "contact@byebimari.com",
+    href: "mailto:contact@byebimari.com",
     icon: "email" as const,
   },
 ] as const;
 
 const SOCIAL_LINKS = [
   { href: "#", icon: "facebook" as const, label: "Facebook" },
-  { href: "#", icon: "twitter" as const, label: "Twitter" },
+  // { href: '#', icon: 'twitter' as const, label: 'Twitter' },
+  { href: "#", icon: "linkedin" as const, label: "LinkedIn" },
   { href: "#", icon: "instagram" as const, label: "Instagram" },
   { href: "#", icon: "youtube" as const, label: "YouTube" },
 ] as const;
@@ -42,7 +43,8 @@ const FOOTER_ICONS = {
   email: "/images/footer/mask-email.png",
   phone: "/images/footer/mask-phone.png",
   facebook: "/images/footer/social-facebook.png",
-  twitter: "/images/footer/social-twitter.png",
+  // twitter: '/images/footer/social-twitter.png',
+  linkedin: "/images/footer/social-linkedin.png",
   instagram: "/images/footer/social-instagram.png",
   youtube: "/images/footer/social-youtube.png",
 } as const;
@@ -56,7 +58,7 @@ type FooterIconName = keyof typeof FOOTER_ICONS;
 const footerTextClass = "text-[16px] capitalize leading-normal text-foreground";
 const footerHeadingClass =
   "text-[16px] font-medium capitalize leading-[13px] text-foreground";
-const contactRowClass = `${footerTextClass} inline-flex items-center gap-3.5 py-0.5`;
+const contactRowClass = `text-[16px] leading-normal text-foreground inline-flex items-center gap-3.5 py-0.5`;
 
 // ---------------------------------------------------------------------------
 // Primitives
@@ -124,7 +126,8 @@ function SocialIcon({
   href: string;
   icon: Extract<
     FooterIconName,
-    "facebook" | "twitter" | "instagram" | "youtube"
+    // "facebook" | "twitter" | "instagram" | "youtube"
+    "facebook" | "linkedin" | "instagram" | "youtube"
   >;
   label: string;
 }) {
