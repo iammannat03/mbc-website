@@ -182,10 +182,17 @@ function ContactRow({
 function BrandColumn() {
   return (
     <div>
-      <p className={footerHeadingClass}>Logo</p>
-      <p className="mt-6 text-[16px] font-light leading-[30px] text-foreground">
+      {/* <p className={footerHeadingClass}>Logo</p> */}
+      <img
+        src="/images/sky/logo.png"
+        alt="Logo"
+        width={15}
+        height={15}
+        className="size-[130px]"
+      />
+      {/* <p className=" text-[16px] font-light leading-[30px] text-foreground">
         {BRAND_DESCRIPTION}
-      </p>
+      </p> */}
       <div className="mt-5 flex gap-5">
         {SOCIAL_LINKS.map((social) => (
           <SocialIcon key={social.label} {...social} />
@@ -249,7 +256,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.75fr)_minmax(0,1fr)_minmax(380px,1.6fr)] xl:gap-x-[30px] xl:gap-y-0">
           <BrandColumn />
           <QuickLinksColumn />
-          <BlogColumn />
+          {/* <BlogColumn /> */}
           <ContactColumn className="sm:col-span-2 xl:col-span-1 xl:pt-2" />
         </div>
       </div>

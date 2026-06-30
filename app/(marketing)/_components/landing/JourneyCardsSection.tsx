@@ -33,8 +33,8 @@ const CARDS: JourneyCard[] = [
     title: "Discover SKY",
     description:
       "Our smart ring tracks what matters most so you can understand your body better.",
-    cta: "Discover",
-    href: "/",
+    cta: "Discover Sky",
+    href: "/meet-the-sky",
     visual: "ring",
     theme: {
       bg: "#eef5ff",
