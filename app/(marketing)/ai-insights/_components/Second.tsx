@@ -46,7 +46,7 @@ const Second = () => {
               </h3>
 
               <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                The SKY Ring Air provides advanced AI health insights, with
+                The SKY Ring provides advanced AI health insights, with
                 monthly and weekly comparison reports to help you track and
                 improve your health. Keep challenging yourself and aim for
                 better health, all at your fingertips.

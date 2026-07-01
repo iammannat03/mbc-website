@@ -59,11 +59,11 @@ export function HeroSection() {
           </div>
 
           <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-[#0C2340] md:text-5xl lg:text-[56px]">
-            Meet Sky Ring
+            Meet SKY Ring
           </h1>
 
           <p className="max-w-[450px] text-base leading-7 text-[#3D5166]">
-            The Sky provides AI health insights, with monthly
+            The SKY provides AI health insights, with monthly
             <br className="hidden md:block" /> and weekly health reports to help
             you track and understands
             <br className="hidden md:block" /> health trends. Keep challenging
@@ -87,7 +87,7 @@ export function HeroSection() {
       <div className="relative h-[600px] w-full md:hidden">
         <Image
           src="/images/meet-sky/meet_hero_mobile.png"
-          alt="Meet Sky Ring"
+          alt="Meet SKY Ring"
           fill
           priority
           className="object-cover object-bottom"

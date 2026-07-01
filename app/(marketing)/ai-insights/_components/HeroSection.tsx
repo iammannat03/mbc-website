@@ -56,7 +56,7 @@ export function HeroSection() {
           </div>
 
           <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
-            The Sky provides AI health insights, with monthly and weekly health
+            The SKY provides AI health insights, with monthly and weekly health
             reports to help you track and understand health trends. Keep
             Challenging yourself and aim for better health, all at your
             fingertips.

@@ -11,7 +11,7 @@ import { SectionHeading } from './SectionHeading'
 const STEPS = [
   {
     title: 'Notice Signals',
-    description: 'Sky ring tracks your daily body signals and patterns',
+    description: 'The SKY ring tracks your daily body signals and patterns',
     icon: '/images/discover-our-approach/icons/third/notice.png'
   },
   {
